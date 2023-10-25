@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+</head>
+<body>
+    {% extends "nav.html" %}
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 justify-content-left">
+                <h1>Search Results</h1>
+                <!-- Jinja 2 For loop-->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Manufacturer</th>
+                            <th>Type</th>
+                            <th>State</th>
+                            <th>Year</th>
+                            <th>Miles</th>
+                            <th>Transmission</th>
+                            <th>Condition</th>
+                            <th>Shop</th>
+                            <th>Price Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Lets add a sort function-->
+                        {% for result in results[:10] %}
+                        <tr>
+                            <td>{{ result.manufacturer.capitalize() }}</td>
+                            <td>{{ result.type.capitalize() }}</td>
+                            <td>{{ result.state.upper() }}</td>
+                            <td>{{ result.year }}</td>
+                            <td>{{ result.odometer }}</td>
+                            <td>{{ result.transmission.capitalize() }}</td>
+                            <td>{{ result.condition.capitalize() }}</td>
+                            <td><a href="https://www.carmax.com/cars?search={{ result.manufacturer }}+{{ result.model }}">Shop for this car</a></td>
+                            <td><a href="{{ url_for('car_details', car_id=result.id) }}">Explore this Car</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <!-- Script Imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
