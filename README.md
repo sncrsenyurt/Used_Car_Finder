@@ -18,10 +18,7 @@ We created two machine learning models to perform the following for the search e
 * [Kolton Kie](https://github.com/kottonxie)
 * [Irfan Sencer Senyurt](https://github.com/sncrsenyurt)
 * [Kyle Stephens](https://github.com/KAMAS-2058)
-### Repository
-- `REPO:` https://github.com/jaredap1995/UCB_project_4
-- `Analysis Last Updated:` August 21st, 2023
-- `Report Last Updated:` August 21st, 2023
+
 ## Table of Contents
 * [Introduction](#introduction)
 * [Setup](#setup)
